@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.content {
+  background-color: #FCF8F4;
+}
+
+.container {
+  margin-right: 30px;
+  margin-left: 30px;
+  padding-bottom: 100%;
+  z-index: 1;
+}
+
+.reservation__label {
+  padding-top: 100px;
+  text-align: center;
+  font-family: 'Forum', cursive;
+  font-size: 50px;
+}
+
+.reservation__line {
+  width: 50%;
+}
+
+.columns {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.column {
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Style for the rectangles */
+.rectangle {
+  height: 60px;
+  width: 230px;
+  background-color: #FDF5F2;
+  margin-bottom: 10px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+    <link rel="stylesheet" href="{% static 'header.css' %}">
+    <link rel="stylesheet" href="{% static 'footer.css' %}">
+    <title>Home</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="header__section">
+                <div class="header__item headerlogo">
+                    <div class="icon">
+                        <span>J</span>
+                    </div>
+                    <a class="logo" href="{% url 'home' %}">Joséphine</a>                  
+                </div>
+                <div class="header__menu">
+                    <span></span>
+                </div>
+            </div>
+            <nav class="header__section buttons">
+                <ul>
+                    <li>
+                        <a href="{% url 'home' %}">Головна сторінка</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'menu' %}">Локація та меню</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'delivery' %}">Доставка</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'reservation' %}">Резервація</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header__burger">
+                <span></span>
+            </div>
+        </div>
+            
+        <div class="content">
+            <div class="header__image">
+                <img src="{% static 'images/main_page.png' %}" alt="" style="width: 100%;">
+                <div class="inviting__block">
+                    <span>
+                        <p class="welcoming">
+                            ЛАСКАВО ПРОСИМО ДО Joséphine
+                        </p>
+                        <p class="description">
+                            Найкращий досвід у смаках<br>французької кухні
+                        </p>
+                        <a href="communications.html">
+                            <button class="my-button">Зв'язатися</button>
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <div class="container">
+                <div class="mobile__inviting__block">
+                    <span>
+                        <p class="welcoming_mobile">
+                            ЛАСКАВО ПРОСИМО ДО <strong>Joséphine</strong>
+                        </p>
+                        <p class="description_mobile">
+                            Найкращий досвід у смаках<br>французької кухні
+                        </p>
+                        <a href="communications.html">
+                            <button class="my-button_mobile">Зв'язатися</button>
+                        </a>
+                    </span>
+                </div>
+                <div class="historic_note">
+                    <p>
+                        Joséphine Bonaparte віддавала перевагу мистецтву, моді та культурі, та була відома своїм розумінням та підтримкою для творчих людей. Вона приваблювала до себе людей своїм шармом та інтелектом, і зі своїм чуттям гумору завжди створювала веселу атмосферу.
+                    </p>
+                </div>
+                <hr class="horizontal-line">
+                <div class="options">
+                    <div class="option1">
+                        <img src="{% static 'images/main1.png' %}" alt="">
+                        <span class="desktop__span">
+                            <h2 class="label">НАШЕ МЕНЮ НІКОЛИ НЕ ЗАКІНЧЕНЕ</h2>
+                            <p>Кожна страва в  Joséphine має власну історію: від традиційних рецептів до сучасних оновлень, які розповідають історію нашої команди, наших кухарів і шеф-кухарів, які залишили слід на нашій кухні, а також нашого обслуговуючого персоналу та менеджерів, які є послами нашої гостинності.</p>            
+                            <a href="">
+                                <button class="button">Меню</button>
+                            </a>             
+                        </span>
+                        <span class="mobile__span">
+                            <h3 class="label">НАШЕ МЕНЮ НІКОЛИ НЕ ЗАКІНЧЕНЕ</h3>
+                            <p>Кожна страва в  Joséphine має власну історію: від традиційних рецептів до сучасних оновлень.</p>            
+                            <a href="">
+                                <button class="button">Меню</button>
+                            </a>             
+                        </span>
+                    </div>
+                    <div class="option2">
+                        <span>
+                            <h2 class="label">ПРОВЕДІТЬ НАСТУПНИЙ ВЕЧІР</h2>
+                            <p>Зробіть Ваш вечір особливим і забронюйте столик заздалегідь. Ми пропонуємо романтичні та затишні куточки для двох, або просторий зал для більшої компанії.</p>            
+                            <a href="">
+                                <button class="button">Резервація</button>
+                            </a>             
+                        </span>
+                        <img src="{% static 'images/main2.png' %}" alt="">
+                    </div>
+                    <div class="option2__mobile">
+                        <img src="images/main2.png" alt="">
+                        <span>
+                            <h3 class="label">ПРОВЕДІТЬ НАСТУПНИЙ ВЕЧІР</h3>
+                            <p>Зробіть Ваш вечір особливим і забронюйте столик заздалегідь. Ми пропонуємо романтичні та затишні куточки для двох, або просторий зал для більшої компанії.</p>            
+                            <a href="">
+                                <button class="button">Резервація</button>
+                            </a>             
+                        </span>
+                    </div>
+                    <div class="option3">
+                        <img src="{% static 'images/main3.png' %}" alt="">
+                        <span class="desktop__span">
+                            <h2 class="label">ДОСТАВКА</h2>
+                            <p>Незалежно від того, чи шукаєте ви особливий обід, щоб винагородити свою команду за наполегливу роботу, чи справити враження на важливого клієнта ідеальною вечерею у вашому домі.</p>            
+                            <a href="">
+                                <button class="button">Замовити зараз</button>
+                            </a>             
+                        </span>
+                        <span class="mobile__span">
+                            <h3 class="label">ДОСТАВКА</h3>
+                            <p>Незалежно від того, чи шукаєте ви особливий обід, щоб винагородити свою команду за наполегливу роботу, чи справити враження на важливого клієнта ідеальною вечерею у вашому домі.</p>            
+                            <a href="">
+                                <button class="button">Замовити зараз</button>
+                            </a>             
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <ul class="social-icons">
+            <li><a href="#"><img src="{% static 'images/facebook.svg' %}" alt="Facebook"></a></li>
+            <li><a href="#"><img src="{% static 'images/twitter.svg' %}" alt="Twitter"></a></li>
+            <li><a href="#"><img src="{% static 'images/instagram.svg' %}" alt="Instagram"></a></li>
+        </ul>
+        <div class="links">
+            <a href="#">Преса</a>
+            <a href="#">Політика конфеденційності</a>
+            <a href="#">FAQ</a>
+        </div>
+    </footer>
+    <script>
+        document.querySelector('.header__burger').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.buttons').classList.toggle('open');
+        })
+    </script>
+</body>
+</html>

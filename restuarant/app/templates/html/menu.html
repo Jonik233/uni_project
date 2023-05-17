@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'menu.css' %}">
+    <link rel="stylesheet" href="{% static 'header.css' %}">
+    <link rel="stylesheet" href="{% static 'footer.css' %}">
+    <title>Menu</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="header__section">
+                <div class="header__item headerlogo">
+                    <div class="icon">
+                        <span>J</span>
+                    </div>
+                    <a class="logo" href="{% url 'home' %}">Joséphine</a>                  
+                </div>
+                <div class="header__menu">
+                    <span></span>
+                </div>
+            </div>
+            <nav class="header__section buttons">
+                <ul>
+                    <li>
+                        <a href="{% url 'home' %}">Головна сторінка</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'menu' %}">Локація та меню</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'delivery' %}">Доставка</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'reservation' %}">Резервація</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header__burger">
+                <span></span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="header__image">
+                <img src="{% static 'images/menu_header.png' %}" alt="" style="width: 100%;">
+            </div>
+            <div class="container">
+                <div class="location__label">
+                    <h1>Години & Локація</h1>
+                </div>
+                <hr class="line1">
+                <div class="locations">
+                    <div class="location1">
+                        <span>
+                            <p>Київ</p>
+                            <p>
+                                Понеділок-П’ятниця 11:30-15:30<br>Субота-Неділя 12:00-16:00
+                            </p>
+                            <div class="location__buttons">
+                                <a href="#"><button class="btn1">Резервація</button></a>
+                                <a href="#"><button class="btn2">Локація</button></a>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="location2">
+                        <span>
+                            <p>Львів</p>
+                            <p>
+                                Понеділок-П’ятниця 10:30-15:00<br>Субота-Неділя 11:00-16:00
+                            </p>
+                            <div class="location__buttons">
+                                <a href="#"><button class="btn1">Резервація</button></a>
+                                <a href="#"><button class="btn2">Локація</button></a>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                <div class="menu__label">
+                    <h1>Меню</h1>
+                </div>
+                <hr class="line2">
+                <div class="menu__block">
+                    <div class="block1"><a href="#">Закуски</a></div>
+                    <div class="block2"><a href="#">Основні страви</a></div>
+                    <div class="block3"><a href="#">Сири</a></div>
+                    <div class="block4"><a href="#">Десерти</a></div>
+                    <div class="block5"><a href="#">Напої</a></div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Меню <i class="fa fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                      <a href="#home">Home</a>
+                      <a href="#about">About</a>
+                      <a href="#contact">Contact</a>
+                    </div>
+                  </div>
+                <div class="dishes">
+                    <div class="row1">
+                        <div class="dish1">
+                            <span>
+                                <img src="{% static 'images/dish1.png' %}" alt="">
+                                <p class="title"><strong>Півень у вині</strong></p>
+                                <div class="description"><p>Курка, тушкована в червоному вині з беконом, грибами і часником</p></div>
+                                <div class="weight_price">
+                                    <div class="weight"><p>290 гр</p></div>
+                                    <div class="price"><span><p>160 ₴</p></span></div>
+                                </div>
+                            </span>
+                        </div>
+                        <div class="dish2">
+                            <span>
+                                <img src="{% static 'images/dish2.png' %}" alt="">
+                                <p><strong>Яловичина Бургіньйон</strong></p>
+                                <div class="description"><p>Класична французька страва з яловичини, моркви, цибулі та бекону.</p></div>
+                                <div class="weight_price">
+                                    <div class="weight"><p>290 гр</p></div>
+                                    <div class="price"><span><p>160 ₴</p></span></div>
+                                </div>
+                            </span>
+                        </div>
+                        <div class="dish3">
+                            <span>
+                                <img src="{% static 'images/dish3.png' %}" alt="">
+                                <p><strong>Рататуй</strong></p>
+                                <div class="description"><p>Овочеве рагу з баклажанів, цукіні, болгарського перцю, помідорів, цибулі та зелені.</p></div>
+                                <div class="weight_price">
+                                    <div class="weight"><p>290 гр</p></div>
+                                    <div class="price"><span><p>160 ₴</p></span></div>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                  
+                      <div class="row2">
+                        <div class="dish1">
+                            <span>
+                                <img src="{% static 'images/dish4.png' %}" alt="">
+                                <p><strong>Касуле</strong></p>
+                                <div class="description"><p>Рагу з квасолі, приготоване з білої квасолі, качиного конфі, ковбаси та свинячого живота.</p></div>
+                                <div class="weight_price">
+                                    <div class="weight"><p>290 гр</p></div>
+                                    <div class="price"><span><p>160 ₴</p></span></div>
+                                </div>
+                            </span>
+                        </div>
+                        <div class="dish2">
+                            <span>
+                                <img src="{% static 'images/dish5.png' %}" alt="">
+                                <p><strong>Буйабес</strong></p>
+                                <div class="description"><p>Рибне рагу, приготоване з різноманітної риби та морепродуктів, помідорів, цибулі, часнику та шафрану.</p></div>
+                                <div class="weight_price">
+                                    <div class="weight"><p>290 гр</p></div>
+                                    <div class="price"><span><p>160 ₴</p></span></div>
+                                </div>
+                            </span>
+                        </div>
+                        <div class="dish3">
+                            <span>
+                                <img src="{% static 'images/dish6.png' %}" alt="">
+                                <p><strong>Кіш Лотарингія</strong></p>
+                                <div class="description"><p>Солоний пиріг із коржами, яйцями, вершками, беконом і сиром.</p></div>
+                                <div class="weight_price">
+                                    <div class="weight"><p>290 гр</p></div>
+                                    <div class="price"><span><p>160 ₴</p></span></div>
+                                </div>
+                            </span>
+                        </div>
+                      </div>
+                  
+                      <div class="row3">
+                        <div class="dish1">
+                            <span>
+                                <img src="{% static 'images/dish7.png' %}" alt="">
+                                <p><strong>Стейк Фріт</strong></p>
+                                <div class="description"><p>Проста, але класична страва зі стейка та картоплі фрі</p></div>
+                                <div class="weight_price">
+                                    <div class="weight"><p>290 гр</p></div>
+                                    <div class="price"><span><p>160 ₴</p></span></div>
+                                </div>
+                            </span>                          
+                        </div>
+                        <div class="dish2">
+                            <span>
+                                <img src="{% static 'images/dish8.png' %}" alt="">
+                                <p><strong>Качине конфі</strong></p>
+                                <div class="description"><p>Качині ніжки, які готуються у власному жирі, поки вони не стануть м’якими та не відпадуть від кісток.</p></div>
+                                <div class="weight_price">
+                                    <div class="weight"><p>290 гр</p></div>
+                                    <div class="price"><span><p>160 ₴</p></span></div>
+                                </div>
+                            </span>
+                        </div>
+                        <div class="dish3">
+                            <span>
+                                <img src="{% static 'images/dish9.png' %}" alt="">
+                                <p><strong>Телятина тушкована</strong></p>
+                                <div class="description"><p>Ситне рагу з квасолі, приготоване з білої квасолі, качиного чи гусячого конфі, ковбаси та свинячого живота.</p></div>
+                                <div class="weight_price">
+                                    <div class="weight"><p>290 гр</p></div>
+                                    <div class="price"><span><p>160 ₴</p></span></div>
+                                </div>
+                            </span>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <ul class="social-icons">
+            <li><a href="#"><img src="{% static 'images/facebook.svg' %}" alt="Facebook"></a></li>
+            <li><a href="#"><img src="{% static 'images/twitter.svg' %}" alt="Twitter"></a></li>
+            <li><a href="#"><img src="{% static 'images/instagram.svg' %}" alt="Instagram"></a></li>
+        </ul>
+        <div class="links">
+            <a href="#">Преса</a>
+            <a href="#">Політика конфеденційності</a>
+            <a href="#">FAQ</a>
+        </div>
+    </footer>
+    <script>
+        document.querySelector('.dropbtn').addEventListener('click', function() {
+            document.querySelector('.dropdown-content').classList.toggle('show');
+        });
+        document.querySelector('.header__burger').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.buttons').classList.toggle('open');
+        })
+    </script>
+</body>
+</html>
