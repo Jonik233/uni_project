@@ -17,6 +17,10 @@ def reservation(request):
     if request.method == 'GET':
         return render(request, 'html/reservation.html')
 
+def get_connections(request):
+    if request.method == 'GET':
+        return render(request, 'html/communications.html')
+
 def form_submit(request):
     if request.method == 'POST':
         name = request.POST.get('name')
