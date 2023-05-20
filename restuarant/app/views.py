@@ -21,6 +21,14 @@ def get_connections(request):
     if request.method == 'GET':
         return render(request, 'html/communications.html')
 
+def delivery_reg(request):
+    if request.method == 'GET':
+        return render(request, 'html/delivery_reg.html')
+
+def delivery_review(request):
+    if request.method == 'GET':
+        return render(request, 'html/delivery_review.html')
+    
 def form_submit(request):
     if request.method == 'POST':
         name = request.POST.get('name')
