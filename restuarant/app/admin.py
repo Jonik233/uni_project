@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import ReservationProfile, Dish
 
-# Register your models here.
+admin.site.register(ReservationProfile)
+admin.site.register(Dish)

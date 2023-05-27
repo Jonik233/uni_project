@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from .forms import ReservationForm
+from django.contrib import messages
 
 def home(request):
     if request.method == 'GET':
@@ -17,6 +19,10 @@ def reservation(request):
     if request.method == 'GET':
         return render(request, 'html/reservation.html')
 
+def error(request):
+    if request.method == 'GET':
+        return render(request, 'html/registration_response.html')
+    
 def get_connections(request):
     if request.method == 'GET':
         return render(request, 'html/communications.html')
@@ -31,14 +37,11 @@ def delivery_review(request):
     
 def form_submit(request):
     if request.method == 'POST':
-        name = request.POST.get('name')
-        phone = request.POST.get('phone')
-        time = request.POST.get('time')
-        date = request.POST.get('date')
-        comments = request.POST.get('comments')
-        return render(request, 'result.html', {'name': name, 
-                                               'phone': phone,
-                                               'time': time,
-                                               'date': date,
-                                               'comments': comments
-                                               })
+        form = ReservationForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        else:
+             return redirect('error')
+    else:                                              
+        return render(request, 'html/reservation.html')

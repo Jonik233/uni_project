@@ -9,5 +9,6 @@ urlpatterns = [
     path('form', views.form_submit, name='form_submit'),
     path('connection', views.get_connections, name='connection'),
     path('delivery_reg', views.delivery_reg, name='delivery_reg'),
-    path('delivery_review', views.delivery_review, name='delivery_review')
+    path('delivery_review', views.delivery_review, name='delivery_review'),
+    path('error', views.error, name='error')
 ]

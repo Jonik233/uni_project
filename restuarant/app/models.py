@@ -6,7 +6,7 @@ class ReservationProfile(models.Model):
     date = models.DateField(auto_now_add=False)
     time = models.TimeField(auto_now_add=False)
     comments = models.TextField()
-    
+
 class Dish(models.Model):
     title = models.CharField(max_length=200)  
     description = models.TextField(max_length=500)
