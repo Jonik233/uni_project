@@ -13,3 +13,4 @@ class Dish(models.Model):
     weight = models.IntegerField()
     price = models.IntegerField()
     image_path = models.CharField(max_length=200)
+

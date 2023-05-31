@@ -49,9 +49,13 @@
                                     <div class="price"><span><p>{{dish.price}} ₴</p></span></div>
                                 </div>
                                 <div class="counter">
-                                    <div class="number"><span>1</span></div>
-                                    <div class="plus"><span>+</span></div>
-                                    <div class="minus"><span>-</span></div>
+                                    <div class="number"><span>0</span></div>
+                                    <div class="plus">
+                                        <button type="button" style="background-color: transparent; color: white; border: none; padding: 0; cursor: pointer; font-size: 18px;" onclick="changeNumber(this, 'increase')">+</button>
+                                    </div>
+                                    <div class="minus">
+                                        <button type="button" style="background-color: transparent; color: white; border: none; padding: 0; cursor: pointer; font-size: 18px;" onclick="changeNumber(this, 'decrease')">-</button>
+                                    </div>
                                 </div>
                             </span>                          
                         </div>
@@ -65,4 +69,21 @@
             </div>
         </div>
     </div>
+    <script>
+        function changeNumber(button, action) {
+          const counter = button.parentNode.parentNode.querySelector('.number span');
+          let count = parseInt(counter.textContent);
+          
+          if (action === 'increase') {
+            count += 1;
+          } else if (action === 'decrease') {
+            if (count > 0) {
+              count -= 1;
+            }
+          }
+          
+          counter.textContent = count;
+        }
+    </script>
+         
 {% endblock %}
