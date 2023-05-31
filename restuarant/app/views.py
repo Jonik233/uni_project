@@ -13,7 +13,7 @@ def menu(request):
         dishes = models.Dish.objects.all()
         context = {"dishes": dishes, "length": len(dishes)}
         return render(request, 'html/menu.html', context)
-    
+
 def delivery(request):
     if request.method == 'GET':
         dishes = models.Dish.objects.all()

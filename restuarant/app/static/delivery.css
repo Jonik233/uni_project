@@ -35,12 +35,12 @@ body {
     padding-bottom: 50px;
 }
 
-.row1, .row2, .row3 {
+.row1  {
     display: flex;
     flex-direction: column; 
 }
 
-.dish1, .dish2, .dish3 {
+.dish1 {
     display: flex;
     flex-direction: column;
     background-color: white;
