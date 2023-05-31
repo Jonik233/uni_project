@@ -66,114 +66,25 @@
                 </div>
             </div>
             <div class="dishes">
-                <div class="row1">
-                    <div class="dish1">
+                 <div class="row">
+                {% for dish in dishes %}
+                    <div class="dish">
                         <span>
-                            <img src="{% static 'images/dish1.png' %}" alt="">
-                            <p class="title"><strong>Півень у вині</strong></p>
-                            <div class="description"><p>Курка, тушкована в червоному вині з беконом, грибами і часником</p></div>
+                            <img src="{% static dish.image_path %}" alt="">
+                            <p><strong>{{ dish.title }}</strong></p>
+                            <div class="description"><p>{{ dish.description }}</p></div>
                             <div class="weight_price">
-                                <div class="weight"><p>290 гр</p></div>
-                                <div class="price"><span><p>160 ₴</p></span></div>
+                                <div class="weight"><p>{{ dish.weight }} гр</p></div>
+                                <div class="price"><span><p>{{ dish.price }} ₴</p></span></div>
                             </div>
                         </span>
                     </div>
-                    <div class="dish2">
-                        <span>
-                            <img src="{% static 'images/dish2.png' %}" alt="">
-                            <p><strong>Яловичина Бургіньйон</strong></p>
-                            <div class="description"><p>Класична французька страва з яловичини, моркви, цибулі та бекону.</p></div>
-                            <div class="weight_price">
-                                <div class="weight"><p>290 гр</p></div>
-                                <div class="price"><span><p>160 ₴</p></span></div>
-                            </div>
-                        </span>
-                    </div>
-                    <div class="dish3">
-                        <span>
-                            <img src="{% static 'images/dish3.png' %}" alt="">
-                            <p><strong>Рататуй</strong></p>
-                            <div class="description"><p>Овочеве рагу з баклажанів, цукіні, болгарського перцю, помідорів, цибулі та зелені.</p></div>
-                            <div class="weight_price">
-                                <div class="weight"><p>290 гр</p></div>
-                                <div class="price"><span><p>160 ₴</p></span></div>
-                            </div>
-                        </span>
-                    </div>
-                </div>
-            
-                <div class="row2">
-                    <div class="dish1">
-                        <span>
-                            <img src="{% static 'images/dish4.png' %}" alt="">
-                            <p><strong>Касуле</strong></p>
-                            <div class="description"><p>Рагу з квасолі, приготоване з білої квасолі, качиного конфі, ковбаси та свинячого живота.</p></div>
-                            <div class="weight_price">
-                                <div class="weight"><p>290 гр</p></div>
-                                <div class="price"><span><p>160 ₴</p></span></div>
-                            </div>
-                        </span>
-                    </div>
-                    <div class="dish2">
-                        <span>
-                            <img src="{% static 'images/dish5.png' %}" alt="">
-                            <p><strong>Буйабес</strong></p>
-                            <div class="description"><p>Рибне рагу, приготоване з різноманітної риби та морепродуктів, помідорів, цибулі, часнику та шафрану.</p></div>
-                            <div class="weight_price">
-                                <div class="weight"><p>290 гр</p></div>
-                                <div class="price"><span><p>160 ₴</p></span></div>
-                            </div>
-                        </span>
-                    </div>
-                    <div class="dish3">
-                        <span>
-                            <img src="{% static 'images/dish6.png' %}" alt="">
-                            <p><strong>Кіш Лотарингія</strong></p>
-                            <div class="description"><p>Солоний пиріг із коржами, яйцями, вершками, беконом і сиром.</p></div>
-                            <div class="weight_price">
-                                <div class="weight"><p>290 гр</p></div>
-                                <div class="price"><span><p>160 ₴</p></span></div>
-                            </div>
-                        </span>
-                    </div>
-                </div>
-            
-                <div class="row3">
-                    <div class="dish1">
-                        <span>
-                            <img src="{% static 'images/dish7.png' %}" alt="">
-                            <p><strong>Стейк Фріт</strong></p>
-                            <div class="description"><p>Проста, але класична страва зі стейка та картоплі фрі</p></div>
-                            <div class="weight_price">
-                                <div class="weight"><p>290 гр</p></div>
-                                <div class="price"><span><p>160 ₴</p></span></div>
-                            </div>
-                        </span>                          
-                    </div>
-                    <div class="dish2">
-                        <span>
-                            <img src="{% static 'images/dish8.png' %}" alt="">
-                            <p><strong>Качине конфі</strong></p>
-                            <div class="description"><p>Качині ніжки, які готуються у власному жирі, поки вони не стануть м’якими та не відпадуть від кісток.</p></div>
-                            <div class="weight_price">
-                                <div class="weight"><p>290 гр</p></div>
-                                <div class="price"><span><p>160 ₴</p></span></div>
-                            </div>
-                        </span>
-                    </div>
-                    <div class="dish3">
-                        <span>
-                            <img src="{% static 'images/dish9.png' %}" alt="">
-                            <p><strong>Телятина тушкована</strong></p>
-                            <div class="description"><p>Ситне рагу з квасолі, приготоване з білої квасолі, качиного чи гусячого конфі, ковбаси та свинячого живота.</p></div>
-                            <div class="weight_price">
-                                <div class="weight"><p>290 гр</p></div>
-                                <div class="price"><span><p>160 ₴</p></span></div>
-                            </div>
-                        </span>
-                    </div>
-                </div>
+                    {% if forloop.counter|divisibleby:3 %}
+                        </div><div class="row">
+                    {% endif %}
+                {% endfor %}
+                 </div>
             </div>
         </div>
     </div>
-{% endblock %}
+{% endblock %}>
