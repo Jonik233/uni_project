@@ -8,18 +8,21 @@ import json
 
 def home(request):
     if request.method == 'GET':
+        request.session.flush()
         return render(request, 'html/index.html')
 
 def menu(request):
     if request.method == 'GET':
         dishes = models.Dish.objects.all()
         context = {"dishes": dishes, "length": len(dishes)}
+        request.session.flush()
         return render(request, 'html/menu.html', context)
 
 def delivery(request):
     if request.method == 'GET':
         dishes = models.Dish.objects.all()
         context = {"dishes": dishes, "length": len(dishes)}
+        request.session.flush()
         return render(request, 'html/delivery.html', context)
 
 def update_dish_quantity(request):
@@ -43,6 +46,7 @@ def update_dish_quantity(request):
 
 def reservation(request):
     if request.method == 'GET':
+        request.session.flush()
         return render(request, 'html/reservation.html')
 
 def error(request):
@@ -55,7 +59,11 @@ def get_connections(request):
 
 def delivery_reg(request):
     if request.method == 'GET':
-        return render(request, 'html/delivery_reg.html')
+        quantities = request.session.get('quantities', {})
+        dishes = models.Dish.objects
+        price = sum([quantities[id] * dishes.get(id=id).price for id in quantities])
+        context = {'price': price}
+        return render(request, 'html/delivery_reg.html', context)
 
 def delivery_review(request):
     if request.method == 'GET':
@@ -64,7 +72,6 @@ def delivery_review(request):
         dishes = [menu.get(id=id) for id in quantities]
         quantities = [quantities[id] for id in quantities]
         context = {"quantities": quantities, "dishes": dishes}
-        request.session.flush()
         return render(request, 'html/delivery_review.html', context)
 
 def form_submit(request):
