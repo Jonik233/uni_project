@@ -25,25 +25,24 @@
             </div>
             <hr class="reservation__line">
             <div class="form__container">
-                <form action="">
+                <form action="{% url 'form_submit_reg' %}" method="POST">
+                    {% csrf_token %}
                     <div class="form__group">
                         <div class="input-container">
-                            <input type="text" id="name" name="name" placeholder="Повне ім'я">
+                            <input type="text" id="name" name="full_name" placeholder="Повне ім'я">
                             <i class="fas fa-user"></i>
                         </div>
                         <div class="input-container">
-                            <input type="text" id="phone" name="phone" placeholder="Номер телефону">
+                            <input type="text" id="phone" name="phone_number" placeholder="Номер телефону">
                             <i class="fas fa-phone"></i>
                         </div>
                     </div>
                     <div class="form__group">
                         <div class="input-container">
-                            <input type="text" id="address" name="Адреса" placeholder="Адреса">
+                            <input type="text" id="address" name="address" placeholder="Адреса">
                             <i class="fas fa-calendar"></i>
                         </div>
                         <div class="input-container" style="border: 1px solid black; height:40px; display: flex; align-items: center; font-size: 14px; padding-left:8px; border-radius:5px">
-                            <!-- <input type="text" id="fee" name="До сплати" placeholder="До сплати">
-                            <i class="fas fa-clock"></i> -->
                             <p><strong>До сплати: {{price}}₴</strong></p>
                         </div>
                     </div>
@@ -54,7 +53,7 @@
                         </div>
                     </div>
                         <button type="submit" class="submit__button1"><a href="{% url 'delivery_review' %}">ПЕРЕГЛЯНУТИ ЗАМОВЛЕННЯ</a></button>
-                        <button type="submit" class="submit__button2"><a href="#">ЗАМОВИТИ</a></button>
+                        <button type="submit" class="submit__button2">ЗАМОВИТИ</button>
                 </form>
             </div>
         </div>

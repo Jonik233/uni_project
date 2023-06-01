@@ -1,5 +1,5 @@
 from django import forms
-from .models import ReservationProfile
+from .models import ReservationProfile, Order
 from django.forms import ModelForm, TextInput, DateInput, NumberInput, TimeInput
 
 class ReservationForm(forms.ModelForm):
@@ -12,3 +12,8 @@ class ReservationForm(forms.ModelForm):
                    "time": TimeInput(attrs={"class":"form-control", "type":"time", "placeholder":"Time"}),
                    "comments": TextInput(attrs={"class":"form-control", "placeholder":"Comments"})
                    }
+
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ['full_name', 'phone_number', 'address', 'comments', 'quantities', 'price']

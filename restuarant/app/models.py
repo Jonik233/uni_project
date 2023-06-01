@@ -17,6 +17,7 @@ class Dish(models.Model):
 class Order(models.Model):
     full_name = models.CharField(max_length=400, default="Default")
     address = models.CharField(max_length=200, default="Default")
+    phone_number = models.IntegerField()
     comments = models.TextField(default="Default")
     quantities = models.JSONField()
     price = models.IntegerField(default=0)

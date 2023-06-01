@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
-from .forms import ReservationForm
+from .forms import ReservationForm, OrderForm
 from django.contrib import messages
 from . import models
 from django.core.exceptions import ObjectDoesNotExist
@@ -52,7 +52,7 @@ def reservation(request):
 def error(request):
     if request.method == 'GET':
         return render(request, 'html/registration_response.html')
-    
+
 def get_connections(request):
     if request.method == 'GET':
         return render(request, 'html/communications.html')
@@ -74,7 +74,7 @@ def delivery_review(request):
         context = {"quantities": quantities, "dishes": dishes}
         return render(request, 'html/delivery_review.html', context)
 
-def form_submit(request):
+def reservation_form(request):
     if request.method == 'POST':
         form = ReservationForm(request.POST or None)
         if form.is_valid():
@@ -84,3 +84,25 @@ def form_submit(request):
              return redirect('error')
     else:                                              
         return render(request, 'html/reservation.html')
+
+def delivery_form(request):
+    if request.method == 'POST':
+        post_data = request.POST.copy()
+        quantities = request.session.get('quantities')
+        dishes = models.Dish.objects
+        price = sum([quantities[id] * dishes.get(id=id).price for id in quantities])
+        post_data["quantities"] = quantities
+        post_data["price"] = price
+               
+        form = OrderForm(post_data or None)
+        if form.is_valid():
+            form.save()
+            return redirect('payment')
+        else:
+             return redirect('error')
+    else:                                              
+        return render(request, 'html/delivery_reg.html')    
+
+def payment(request):
+    if request.method == 'GET':
+        return render(request, 'html/payment.html')

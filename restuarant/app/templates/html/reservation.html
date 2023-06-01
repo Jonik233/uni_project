@@ -25,7 +25,7 @@
             </div>
             <hr class="reservation__line">
             <div class="form__container">
-                <form action="{% url 'form_submit' %}" method="POST">
+                <form action="{% url 'form_submit_reservation' %}" method="POST">
                     {% csrf_token %}
                     <div class="form__group">
                         <div class="input-container">
