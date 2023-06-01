@@ -10,5 +10,6 @@ urlpatterns = [
     path('connection', views.get_connections, name='connection'),
     path('delivery_reg', views.delivery_reg, name='delivery_reg'),
     path('delivery_review', views.delivery_review, name='delivery_review'),
-    path('error', views.error, name='error')
+    path('error', views.error, name='error'),
+    path('update_dish_quantity/', views.update_dish_quantity, name='update_dish_quantity')
 ]

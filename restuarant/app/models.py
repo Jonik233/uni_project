@@ -14,3 +14,17 @@ class Dish(models.Model):
     price = models.IntegerField()
     image_path = models.CharField(max_length=200)
 
+class Order(models.Model):
+    full_name = models.CharField(max_length=400, default="Default")
+    address = models.CharField(max_length=200, default="Default")
+    comments = models.TextField(default="Default")
+    quantities = models.JSONField()
+    price = models.IntegerField(default=0)
+    
+    def update_quantities(self, new_quantities):
+        self.quantities = new_quantities
+        self.update_price(new_quantities)
+        
+    def update_price(self):
+        dishes = Dish.objects
+        self.price = sum([self.quantities[id] * dishes.get(id).price for id in self.quantities])

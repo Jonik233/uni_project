@@ -48,7 +48,7 @@
                                     <div class="weight"><p>{{dish.weight}} гр</p></div>
                                     <div class="price"><span><p>{{dish.price}} ₴</p></span></div>
                                 </div>
-                                <div class="counter">
+                                <div class="counter" data-dish-id="{{ dish.id }}">
                                     <div class="number"><span>0</span></div>
                                     <div class="plus">
                                         <button type="button" style="background-color: transparent; color: white; border: none; padding: 0; cursor: pointer; font-size: 18px;" onclick="changeNumber(this, 'increase')">+</button>
@@ -63,26 +63,76 @@
                             </div><div class="row1">
                         {% endif %}
                     {% endfor %}
-                                        
                 </div>
-                    <button button type="submit" class="submit__button"><a href="{% url 'delivery_reg' %}">ОФОРМИТИ ЗАМОВЛЕННЯ</a></button>
+                    <button button type="submit" class="submit__button" onclick="redirectToDeliveryReg()">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
             </div>
         </div>
     </div>
     <script>
-        function changeNumber(button, action) {
-          const counter = button.parentNode.parentNode.querySelector('.number span');
-          let count = parseInt(counter.textContent);
-          
-          if (action === 'increase') {
-            count += 1;
-          } else if (action === 'decrease') {
-            if (count > 0) {
-              count -= 1;
+        
+            function getCookie(name) {
+                const cookieValue = document.cookie.split(';')
+                    .map(cookie => cookie.trim())
+                    .find(cookie => cookie.startsWith(name + '='));
+                    
+                if (cookieValue) {
+                    return cookieValue.split('=')[1];
+                }
+                
+                return null;
             }
-          }
-          
-          counter.textContent = count;
+
+            function changeNumber(button, action) {
+                    const counter = button.parentNode.parentNode.querySelector('.number span');
+                    let count = parseInt(counter.textContent);
+                    
+                    if (action === 'increase') {
+                        count += 1;
+                    } else if (action === 'decrease') {
+                        if (count > 0) {
+                        count -= 1;
+                        }
+                    }          
+                    counter.textContent = count;
+
+                    // Send the updated dish quantity to the Django view
+                    const dishId = button.parentNode.parentNode.getAttribute('data-dish-id');
+                    updateDishQuantity(dishId, count);
+                }
+
+                function updateDishQuantity(dishId, quantity) {
+                    const url = '/update_dish_quantity/';
+
+                    // Create an AJAX request
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('POST', url, true);
+                    xhr.setRequestHeader('Content-Type', 'application/json');
+                    xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+
+                    // Define the data to send
+                    const data = JSON.stringify({
+                        'dish_id': dishId,
+                        'quantity': quantity
+                    });
+
+                    // Define the AJAX callback
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === XMLHttpRequest.DONE) {
+                            if (xhr.status === 200) {
+                                // Success! 
+                            } else {
+                                console.error('Error:', xhr.status);
+                            }
+                        }
+                    };
+
+                    // Send the AJAX request
+                    xhr.send(data);
+            }
+
+
+        function redirectToDeliveryReg() {
+             window.location.href = "{% url 'delivery_reg' %}";
         }
     </script>
          
