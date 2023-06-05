@@ -38,3 +38,7 @@ class Order(models.Model):
     def update_price(self):
         dishes = Dish.objects
         self.price = sum([self.quantities[id] * dishes.get(id).price for id in self.quantities])
+
+class Table(models.Model):
+    number = models.IntegerField()
+    booked = models.BooleanField()

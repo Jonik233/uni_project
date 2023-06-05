@@ -130,3 +130,7 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ACCOUNT_SID = "AC1b0966000ec752e6e4deade0c4ad32ee"
+AUTH_TOKEN = "852c93dd0487d59ae0d6f54f78f20897"
+TWILLO_PHONE = "+13612667438"

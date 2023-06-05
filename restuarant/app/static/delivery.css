@@ -154,16 +154,13 @@ a:hover {
   margin-top: 40px;
 }
 
-.menu__block .block1,
-.menu__block .block3,
-.menu__block .block4,
-.menu__block .block5 {
+.menu__block .block {
   background-color: rgba(0, 0, 0, 0.55);
   padding: 10px;
   padding-top: 6px;
 }
 
-.menu__block .block2 {
+.menu__block .block.active {
   background-color: black;
   padding: 10px;
   padding-top: 6px;

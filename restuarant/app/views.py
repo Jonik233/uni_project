@@ -5,6 +5,8 @@ from django.contrib import messages
 from . import models
 from django.core.exceptions import ObjectDoesNotExist
 import json 
+from twilio.rest import Client
+import random
 
 def home(request):
     if request.method == 'GET':
@@ -18,10 +20,10 @@ def menu(request, category):
         context['active_category'] = category
         return render(request, 'html/menu.html',context)
 
-def delivery(request):
+def delivery(request, category):
     if request.method == 'GET':
-        dishes = models.Dish.objects.all()
-        context = {"dishes": dishes, "length": len(dishes)}
+        context = menu_category(category)
+        context['active_category'] = category
         request.session.flush()
         return render(request, 'html/delivery.html', context)
 
@@ -79,6 +81,7 @@ def reservation_form(request):
         form = ReservationForm(request.POST or None)
         if form.is_valid():
             form.save()
+            send_sms(form['visitor_phone_number'].data)
             return redirect('home')
         else:
              return redirect('error')
@@ -122,3 +125,18 @@ def menu_category(category):
         })
     context = {"dishes":menu_data, "selected_category": category}
     return context
+
+def send_sms(phone_number):
+
+    account_sid = 'AC1b0966000ec752e6e4deade0c4ad32ee'
+    auth_token = '852c93dd0487d59ae0d6f54f78f20897'
+    client = Client(account_sid, auth_token)
+
+    tables = models.Table.objects.filter(booked=False)
+    table = random.choice(tables)
+
+    message = client.messages.create(
+        from_='+13612667438',
+        body=f'Дякуємо, що користуєтеся нашими послугами, номер вашого столику: {table.number}',
+        to=phone_number
+    )
