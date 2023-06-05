@@ -95,7 +95,6 @@
                     }          
                     counter.textContent = count;
 
-                    // Send the updated dish quantity to the Django view
                     const dishId = button.parentNode.parentNode.getAttribute('data-dish-id');
                     updateDishQuantity(dishId, count);
                 }
@@ -103,19 +102,16 @@
                 function updateDishQuantity(dishId, quantity) {
                     const url = '/update_dish_quantity/';
 
-                    // Create an AJAX request
                     const xhr = new XMLHttpRequest();
                     xhr.open('POST', url, true);
                     xhr.setRequestHeader('Content-Type', 'application/json');
                     xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
 
-                    // Define the data to send
                     const data = JSON.stringify({
                         'dish_id': dishId,
                         'quantity': quantity
                     });
 
-                    // Define the AJAX callback
                     xhr.onreadystatechange = function () {
                         if (xhr.readyState === XMLHttpRequest.DONE) {
                             if (xhr.status === 200) {

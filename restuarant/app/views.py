@@ -11,12 +11,12 @@ def home(request):
         request.session.flush()
         return render(request, 'html/index.html')
 
-def menu(request):
+def menu(request, category):
     if request.method == 'GET':
-        dishes = models.Dish.objects.all()
-        context = {"dishes": dishes, "length": len(dishes)}
         request.session.flush()
-        return render(request, 'html/menu.html', context)
+        context = menu_category(category)
+        context['active_category'] = category
+        return render(request, 'html/menu.html',context)
 
 def delivery(request):
     if request.method == 'GET':
@@ -106,3 +106,19 @@ def delivery_form(request):
 def payment(request):
     if request.method == 'GET':
         return render(request, 'html/payment.html')
+    
+def menu_category(category):
+
+    dishes = models.Dish.objects.filter(category=category)
+
+    menu_data = []
+    for dish in dishes:
+        menu_data.append({
+            'image_path': dish.image_path,
+            'title': dish.title,
+            'description': dish.description,
+            'weight': dish.weight,
+            'price': dish.price,
+        })
+    context = {"dishes":menu_data, "selected_category": category}
+    return context

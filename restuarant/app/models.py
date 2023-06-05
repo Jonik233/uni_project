@@ -13,6 +13,15 @@ class Dish(models.Model):
     weight = models.IntegerField()
     price = models.IntegerField()
     image_path = models.CharField(max_length=200)
+    
+    CATEGORY_CHOICES = [
+        ("appetizer", "Закуски"), 
+        ("main", "Основні страви"),
+        ("cheese", "Сири"),
+        ("dessert", "Десерти"),
+        ("beverages", "Напої")
+    ]
+    category = models.CharField(max_length=200, choices=CATEGORY_CHOICES)
 
 class Order(models.Model):
     full_name = models.CharField(max_length=400, default="Default")

@@ -80,13 +80,13 @@ body {
     margin-top: 40px;
 }
 
-.menu__block .block1, .block3, .block4, .block5 {
+.menu__block .block {
     background-color: rgba(0, 0, 0, 0.55);
     padding: 10px;
     padding-top: 6px;
 }
 
-.menu__block .block2 {
+.menu__block .block.active {
     background-color: black;
     padding: 10px;
     padding-top: 6px;
@@ -97,7 +97,8 @@ body {
     padding: 10px;
 }
 
-.menu__block:hover, a:hover {
+.menu__block:hover,
+a:hover {
     cursor: pointer;
 }
 

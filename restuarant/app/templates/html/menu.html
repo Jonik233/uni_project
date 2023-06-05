@@ -51,12 +51,22 @@
             </div>
             <hr class="line2">
             <div class="menu__block">
-                <div class="block1"><a href="#">Закуски</a></div>
-                <div class="block2"><a href="#">Основні страви</a></div>
-                <div class="block3"><a href="#">Сири</a></div>
-                <div class="block4"><a href="#">Десерти</a></div>
-                <div class="block5"><a href="#">Напої</a></div>
-            </div>
+                <div class="block block1{% if selected_category == 'appetizer' %} active{% endif %}">
+                    <a href="{% url 'menu' 'appetizer' %}">Закуски</a>
+                </div>
+                <div class="block block2{% if selected_category == 'main' %} active{% endif %}">
+                    <a href="{% url 'menu' 'main' %}">Основні страви</a>
+                </div>
+                <div class="block block3{% if selected_category == 'cheese' %} active{% endif %}">
+                    <a href="{% url 'menu' 'cheese' %}">Сири</a>
+                </div>
+                <div class="block block4{% if selected_category == 'dessert' %} active{% endif %}">
+                    <a href="{% url 'menu' 'dessert' %}">Десерти</a>
+                </div>
+                <div class="block block5{% if selected_category == 'beverages' %} active{% endif %}">
+                    <a href="{% url 'menu' 'beverages' %}">Напої</a>
+                </div>
+            </div>            
             <div class="dropdown">
                 <button class="dropbtn">Меню <i class="fa fa-caret-down"></i></button>
                 <div class="dropdown-content">
@@ -87,4 +97,13 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            $(".menu-block").click(function() {
+                $(".menu-block").removeClass("active");
+                $(this).addClass("active");
+            });
+        });
+    </script>
+    
 {% endblock %}>
