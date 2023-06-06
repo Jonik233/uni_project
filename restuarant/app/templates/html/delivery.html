@@ -79,14 +79,14 @@
         </div>
     </div>
     <script>
-
-        $(document).ready(function() {
+            
+            $(document).ready(function() {
                 $(".menu-block").click(function() {
                     $(".menu-block").removeClass("active");
                     $(this).addClass("active");
                 });
         });
-            
+        
             function getCookie(name) {
                 const cookieValue = document.cookie.split(';')
                     .map(cookie => cookie.trim())
@@ -114,7 +114,7 @@
 
                     const dishId = button.parentNode.parentNode.getAttribute('data-dish-id');
                     updateDishQuantity(dishId, count);
-                }
+            }
 
                 function updateDishQuantity(dishId, quantity) {
                     const url = '/update_dish_quantity/';
@@ -147,6 +147,7 @@
         function redirectToDeliveryReg() {
              window.location.href = "{% url 'delivery_reg' %}";
         }
+
     </script>
          
 {% endblock %}

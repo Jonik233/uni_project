@@ -113,17 +113,8 @@ def payment(request):
 def menu_category(category):
 
     dishes = models.Dish.objects.filter(category=category)
-
-    menu_data = []
-    for dish in dishes:
-        menu_data.append({
-            'image_path': dish.image_path,
-            'title': dish.title,
-            'description': dish.description,
-            'weight': dish.weight,
-            'price': dish.price,
-        })
-    context = {"dishes":menu_data, "selected_category": category}
+    
+    context = {"dishes":dishes, "selected_category": category}
     return context
 
 def send_sms(phone_number):
